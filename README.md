@@ -92,7 +92,7 @@ nodemon server.js
 - Environment variable management 🔐
 
 
-## 📸 Screenshots (optional)
+## 📸 Screenshots
 ![image](https://github.com/user-attachments/assets/78905d09-053c-463a-aa4f-e36c144443c7)
 ![image](https://github.com/user-attachments/assets/d4f89175-5e6c-418c-b273-63c4c691d744)
 ![image](https://github.com/user-attachments/assets/0630cef7-80e1-4718-baf3-3d93422c5ad9)
