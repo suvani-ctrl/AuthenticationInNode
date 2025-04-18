@@ -97,6 +97,17 @@ nodemon server.js
 ![image](https://github.com/user-attachments/assets/d4f89175-5e6c-418c-b273-63c4c691d744)
 ![image](https://github.com/user-attachments/assets/0630cef7-80e1-4718-baf3-3d93422c5ad9)
 ![image](https://github.com/user-attachments/assets/a7c45dae-ff8a-4bbb-9586-a9e33be38904)
+![image](https://github.com/user-attachments/assets/fbd0469b-804f-4992-9686-cfb1342be9a3)
+![image](https://github.com/user-attachments/assets/898571a8-3db4-4688-9ef6-9be2c26b1e1c)
+
+## with normal users bearer token
+![image](https://github.com/user-attachments/assets/f892e03a-0c35-409b-9681-fa7071ec0a53)
+
+## with admin bearer token
+![image](https://github.com/user-attachments/assets/2b876778-dfbc-4144-bad0-f763558190da)
+
+
+
 
 
 
