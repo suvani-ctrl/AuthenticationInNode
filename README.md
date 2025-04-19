@@ -237,7 +237,14 @@ Delete Images
 Only admins can delete images
 ![image](https://github.com/user-attachments/assets/9260529e-ad9b-4408-8781-427764a19bcb)
 
+MongoDB
+![image](https://github.com/user-attachments/assets/46077c2c-6e09-46c5-8a9b-7634140ea6d4)
+
+Images uploaded on cloudinary
+![image](https://github.com/user-attachments/assets/f738bd1d-4ec5-4b81-a9d9-890c466e38ad)
 
 
+P.S the presence of     fs.unlinkSync(req.file.path);
+ deletes teh file on our directory /upload once the file is uplaoded to cloudinary <3
 
 
