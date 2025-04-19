@@ -1,43 +1,87 @@
-# 🚀 Node.js Authentication API
 
-Welcome to the **AuthenticationInNode** project — a clean, beginner-friendly authentication API built using **Node.js**, **Express**, **MongoDB (Mongoose)**, **JWT**, and **bcryptjs**. 🔐✨
+
+# 🚀 Authentication & Image Upload API — Node.js, Express, MongoDB, Cloudinary
+
+Welcome to the [**AuthenticationInNode**](https://github.com/suvani-ctrl/AuthenticationInNode) project — a beginner-friendly, full-featured REST API built with **Node.js**, **Express**, **MongoDB (Mongoose)**, **JWT**, **bcryptjs**, and **Cloudinary**.  
+It handles secure **user authentication** and **image upload, fetch, and delete operations** — cleanly structured for learning and scalability.
+
+---
 
 ## 📁 Project Structure
 
 ```
-Authentication/
-├── controllers/        # Authentication logic (register, login)
-├── database/           # MongoDB connection config
-├── middleware/         # (For future custom middleware like auth checks)
-├── models/             # Mongoose schemas (User model)
-├── routes/             # API route definitions
-├── .env                # Environment variables (secret keys, DB URI)
-├── package.json        # Project metadata and dependencies
-├── server.js           # Main server entry point
+AuthenticationInNode/
+├── controllers/        
+│   ├── auth-controller.js         # Authentication logic (register, login)
+│   └── image-controller.js        # Image upload, fetch, delete logic
+├── database/                      # MongoDB connection config
+├── helpers/
+│   └── cloudinaryHelper.js        # Cloudinary image upload helper
+├── middleware/                    # (Custom middleware — like JWT auth checks)
+├── models/                        
+│   ├── User.js                    # Mongoose User schema
+│   └── Image.js                   # Mongoose Image schema
+├── routes/                        
+│   ├── auth-routes.js             # Auth route definitions
+│   └── image-routes.js            # Image route definitions
+├── uploads/                       # Temporary local file storage
+├── .env                           # Environment variables
+├── package.json                   # Project metadata and dependencies
+├── server.js                      # Main server entry point
+└── README.md                      # Documentation
 ```
+
+---
 
 ## ✨ Features
 
-✅ User Registration  
-✅ User Login with hashed passwords  
-✅ JWT Token generation and validation  
-✅ User roles (admin/user)  
-✅ MongoDB integration using Mongoose  
-✅ Neatly organized project structure  
+### 🔐 Authentication
+- ✅ User registration
+- ✅ User login with hashed passwords
+- ✅ JWT token generation and validation
+- ✅ User roles (admin/user)
+- ✅ MongoDB integration using Mongoose
 
+### 📸 Image Upload API
+- ✅ Upload images to **Cloudinary**
+- ✅ Store image metadata in **MongoDB**
+- ✅ Fetch images with **pagination** and **sorting**
+- ✅ Delete images (only by the uploading user)
+- ✅ Delete local files after successful upload
 
-## 🔐 API Endpoints
+---
 
-### Authentication Routes (`/api/auth`)
+## 🔐 Authentication API Endpoints
 
-- `POST /register` — Register a new user
-- `POST /login` — Log in a user and receive a JWT token
+| Method | Endpoint      | Description                     |
+|:--------|:----------------|:--------------------------------|
+| `POST`  | `/api/auth/register` | Register a new user              |
+| `POST`  | `/api/auth/login`    | Log in a user and receive a JWT  |
 
-### Home/Admin Routes (`/`)
+### Public/Home/Admin Routes
 
-- `GET /welcome` — Public welcome page
-- `GET /admin-page` — Example admin-only page (protected in future updates)
+| Method | Endpoint      | Description                        |
+|:--------|:----------------|:------------------------------------|
+| `GET`  | `/welcome`         | Public welcome message               |
+| `GET`  | `/admin-page`      | Example admin-only page (protected in future) |
 
+---
+
+## 📸 Image Upload API Endpoints
+
+| Method | Endpoint               | Description                                        |
+|:--------|:--------------------------|:---------------------------------------------------|
+| `POST`  | `/api/images/upload`        | Upload an image (requires authenticated user)       |
+| `GET`   | `/api/images`               | Fetch all images (supports pagination & sorting)    |
+| `DELETE`| `/api/images/:id`           | Delete an image (only by the uploading user)        |
+
+**Image Query Parameters**
+- `page` — (optional) default: 1
+- `limit` — (optional) default: 5
+- `sortBy` — (optional) default: `createdAt`
+- `sortOrder` — (optional) `asc` or `desc` (default: `desc`)
+
+---
 
 ## 🛠️ Technologies Used
 
@@ -45,51 +89,84 @@ Authentication/
 - **Express** ⚡
 - **MongoDB & Mongoose** 🍃
 - **bcryptjs** 🔒
-- **jsonwebtoken** 🛡️
+- **jsonwebtoken (JWT)** 🛡️
+- **Cloudinary** ☁️
+- **Multer** (file upload middleware)
 
+---
 
 ## ⚙️ Getting Started
 
-1. **Clone the repository**
+### 📥 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/suvani-ctrl/AuthenticationInNode.git
 cd AuthenticationInNode
 ```
 
-2. **Install dependencies**
+### 📦 2️⃣ Install Dependencies
 ```bash
 npm install
 ```
 
-3. **Create a `.env` file**
-```
+### 📝 3️⃣ Create a `.env` File
+```env
 PORT=3000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET_KEY=your_secret_key
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
 ```
 
-4. **Run the server**
+### 🚀 4️⃣ Run the Server
 ```bash
 nodemon server.js
 ```
 
-5. **Test with Postman or cURL** 🎨
-
+---
 
 ## 📌 Notes
 
-- Passwords are hashed using **bcryptjs** before being saved in the database.
-- JWT tokens are generated on login and can be used for authenticated routes.
-- `iat` in JWT payload stands for **Issued At** (timestamp when the token was created).
-- You can extend the `/middleware` directory to add custom authentication middlewares later.
+- Passwords are securely hashed using **bcryptjs**
+- JWT tokens are generated on login and protect authenticated routes
+- `iat` in JWT payload = *Issued At* (token creation timestamp)
+- Uploaded images are temporarily stored locally then moved to **Cloudinary**
+- The `/middleware` directory is ready for adding custom authentication or role-based middleware
 
+---
 
 ## 📚 Learnings
 
 - REST API fundamentals 📖
 - MongoDB document modeling 📄
-- JWT token handling 🔑
+- JWT token management 🔑
+- Cloudinary integration for file hosting ☁️
+- Password encryption with bcrypt 🔒
+- API pagination and sorting 📊
 - Environment variable management 🔐
+- Modular, clean backend architecture 🏗️
+
+---
+
+## 🎨 Test the API
+
+Use **Postman**, **cURL**, or any API client to test all endpoints.
+
+---
+
+## ✨ Author
+
+**[Suvani](https://github.com/suvani-ctrl)**  
+
+---
+
+## ⭐ GitHub Repo
+
+👉 [https://github.com/suvani-ctrl/AuthenticationInNode](https://github.com/suvani-ctrl/AuthenticationInNode)
+
+---
+
+```
 
 
 ## 📸 Screenshots
