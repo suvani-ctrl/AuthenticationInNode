@@ -168,22 +168,87 @@ Use **Postman**, **cURL**, or any API client to test all endpoints.
 
 ```
 
+screenshots
 
-## 📸 Screenshots
-![image](https://github.com/user-attachments/assets/78905d09-053c-463a-aa4f-e36c144443c7)
-![image](https://github.com/user-attachments/assets/d4f89175-5e6c-418c-b273-63c4c691d744)
-![image](https://github.com/user-attachments/assets/0630cef7-80e1-4718-baf3-3d93422c5ad9)
-![image](https://github.com/user-attachments/assets/a7c45dae-ff8a-4bbb-9586-a9e33be38904)
-![image](https://github.com/user-attachments/assets/fbd0469b-804f-4992-9686-cfb1342be9a3)
-![image](https://github.com/user-attachments/assets/898571a8-3db4-4688-9ef6-9be2c26b1e1c)
+Normal User
 
-## with normal users bearer token
-![image](https://github.com/user-attachments/assets/f892e03a-0c35-409b-9681-fa7071ec0a53)
+![image](https://github.com/user-attachments/assets/99c410a7-fefa-4a37-9827-1f6fc4daeb99)
 
-## with admin bearer token
-![image](https://github.com/user-attachments/assets/2b876778-dfbc-4144-bad0-f763558190da)
+Admin User
+
+![image](https://github.com/user-attachments/assets/d59c06fa-0936-4587-bc7e-8238e0730576)
+
+![image](https://github.com/user-attachments/assets/df9060c1-6570-4748-8c5c-e8ce0c4bbaec)
+
+Admin User can Only upload image
+![image](https://github.com/user-attachments/assets/83cdbcc4-cb68-4c39-8703-e45001895978)
 
 
+Normal User cannot upload any images
+![image](https://github.com/user-attachments/assets/1312a462-5868-45c0-9b34-39309ea1f843)
+
+Fetch all the images
+
+![image](https://github.com/user-attachments/assets/5c037e14-a87c-4df7-b290-534f3b9a9104)
+
+
+📸 Image Upload & Fetch API
+📤 Upload Image
+
+POST /api/images/upload
+Uploads an image file to Cloudinary and saves its metadata in MongoDB.
+
+Response:
+
+{
+  "success": true,
+  "message": "Image uploaded successfully",
+  "image": {
+    "_id": "...",
+    "url": "cloudinary_image_url",
+    "publicId": "cloudinary_public_id",
+    "uploadedBy": "user_id",
+    "createdAt": "timestamp"
+  }
+}
+
+📥 Fetch Images
+
+GET /api/images
+Fetches all uploaded images with pagination and sorting support.
+
+Query Parameters:
+
+    page (default: 1)
+
+    limit (default: 5)
+
+    sortBy (default: createdAt)
+
+    sortOrder (asc/desc, default: desc)
+
+Response:
+
+{
+  "success": true,
+  "currentPage": 1,
+  "totalPages": 1,
+  "totalImages": 3,
+  "data": [
+    {
+      "_id": "...",
+      "url": "cloudinary_image_url",
+      "uploadedBy": "user_id",
+      "createdAt": "timestamp"
+    }
+  ]
+}
+
+Delete Images
+![image](https://github.com/user-attachments/assets/a6078457-7b3f-4f9b-bc43-43ddf5064007)
+
+Only admins can delete images
+![image](https://github.com/user-attachments/assets/9260529e-ad9b-4408-8781-427764a19bcb)
 
 
 
