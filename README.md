@@ -154,19 +154,6 @@ Use **Postman**, **cURL**, or any API client to test all endpoints.
 
 ---
 
-## ✨ Author
-
-**[Suvani](https://github.com/suvani-ctrl)**  
-
----
-
-## ⭐ GitHub Repo
-
-👉 [https://github.com/suvani-ctrl/AuthenticationInNode](https://github.com/suvani-ctrl/AuthenticationInNode)
-
----
-
-```
 
 screenshots
 
